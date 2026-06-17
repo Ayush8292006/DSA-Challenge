@@ -1,36 +1,17 @@
 #include <iostream>
 #include <vector>
-#include <climits>
 using namespace std;
 
-// Recursive helper
-void maxProfitFinder(vector<int>& prices, int i, int &minPrice, int &maxProfit) {
-    // base case
-    if(i == prices.size()) return;
-
-    // update min price
-    if(prices[i] < minPrice) {
-        minPrice = prices[i];
-    }
-
-    // calculate profit
-    int todayProfit = prices[i] - minPrice;
-
-    // update max profit
-    if(todayProfit > maxProfit) {
-        maxProfit = todayProfit;
-    }
-
-    // recursive call
-    maxProfitFinder(prices, i + 1, minPrice, maxProfit);
-}
-
-// main function
 int maxProfit(vector<int>& prices) {
-    int minPrice = INT_MAX;
-    int maxProfit = INT_MIN;
+    int maxProfit = 0;
+    int bestBuy = prices[0];
 
-    maxProfitFinder(prices, 0, minPrice, maxProfit);
+    for(int i = 1; i < prices.size(); i++) {
+        if(prices[i] > bestBuy) {
+            maxProfit = max(maxProfit, prices[i] - bestBuy);
+        }
+        bestBuy = min(bestBuy, prices[i]);
+    }
 
     return maxProfit;
 }

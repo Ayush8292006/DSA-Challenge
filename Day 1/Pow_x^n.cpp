@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+// even binform  rhega to multiply nhi krenge,  odd rhega tb multiply krenge
+// jese n = 10 to multiply nhi krenge , binform fir n/2 hokr 5 hoga to multiply krenge, x = x*x krke x ko update krenge, binform ko bhi n/2 krke update krenge
+
 double myPow(double x, int n) {
     if(n == 0) return 1.0;
     if(x == 0) return 0.0;
